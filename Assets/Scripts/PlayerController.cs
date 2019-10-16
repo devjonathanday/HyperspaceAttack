@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Input")]
+    private Vector2 mouseDelta;
+    public float lookSpeed;
+
+    [Header("References - Self")]
+    public Transform cam;
+
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        #region Input
+
+        mouseDelta.x = Input.GetAxis("Mouse X");
+        mouseDelta.y = Input.GetAxis("Mouse Y");
+
+        cam.Rotate(-mouseDelta.y * lookSpeed, mouseDelta.x * lookSpeed, 0);
+
+        #endregion
     }
 }
