@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 5409311789119942407}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.432, y: -0.177, z: 0.474}
-  m_LocalScale: {x: 0.2, y: 0.20000024, z: 0.20000024}
+  m_LocalScale: {x: 0.2, y: 0.20000048, z: 0.20000048}
   m_Children: []
   m_Father: {fileID: 5409311788846687806}
   m_RootOrder: 0
@@ -281,4 +281,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookSpeed: 2
-  cam: {fileID: 5409311788846687806}
