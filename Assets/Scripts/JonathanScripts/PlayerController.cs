@@ -14,11 +14,14 @@ public class PlayerController : MonoBehaviour
     [Header("Physics")]
     public Rigidbody rBody;
     public float moveSpeed;
+    public LayerMask hitScanLayers;
 
     [Header("Visuals")]
     public float boostShakeThreshold;
     public float boostShakeIntensity;
     public float boostShakeDuration;
+
+    public Animator gunAnimator;
 
     [Header("References")]
     private Player player;
@@ -71,12 +74,9 @@ public class PlayerController : MonoBehaviour
     Vector3 GetBulletTarget()
     {
         Ray trajectory = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(trajectory, out RaycastHit hit, GM.shotRange))
-        {
-            if(!hit.collider.gameObject.CompareTag("PlayerBullet") &&
-               !hit.collider.gameObject.CompareTag("EnemyBullet")) //Disable aiming at bullets
+        if (Physics.Raycast(trajectory, out RaycastHit hit, GM.shotRange, hitScanLayers))
                 return hit.point;
-        }
+
         return transform.position + (transform.forward * GM.shotRange);
     }
 
@@ -84,8 +84,9 @@ public class PlayerController : MonoBehaviour
     {
         if (GM.canShoot)
         {
+            gunAnimator.SetTrigger("Shoot");
             GM.fireTimeStamp = Time.time;
-            GameObject newBullet = Instantiate(projectileBullet, firePoint.position, Quaternion.identity);
+            GameObject newBullet = Instantiate(projectileBullet, firePoint.position, transform.rotation);
             Vector3 trajectory = GetBulletTarget() - firePoint.position;
             newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * GM.bulletSpeed) + rBody.velocity);
         }

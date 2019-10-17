@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public enum SHOTTYPE { Standard, AutoFire }
 
     public int score;
+    public bool godMode;
 
     [Header("Shooting")]
     SHOTTYPE shotType;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
         set
         {
             shotType = value;
-            switch(shotType)
+            switch (shotType)
             {
                 case SHOTTYPE.Standard:
                     autoFire = false;
@@ -27,10 +28,21 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     public bool canShoot;
     public bool autoFire;
     public float shotRange; //Distance of raycast from camera to hit point
     public float bulletSpeed;
     public float fireTimeStamp;
     public float fireDelay;
+
+    private void Update()
+    {
+        if (godMode)
+        {
+            shotType = SHOTTYPE.AutoFire;
+            canShoot = true;
+            autoFire = true;
+        }
+    }
 }
