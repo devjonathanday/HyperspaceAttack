@@ -15,15 +15,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rBody;
     public float moveSpeed;
 
-    [Header("Shooting")]
-    public bool canShoot;
-    public float shotRange; //Distance of raycast from camera to hit point
-    public float bulletSpeed;
-    [Space(10)]
-    public bool autoFire;
-    float fireTimeStamp;
-    [SerializeField] float fireDelay;
-
     [Header("Visuals")]
     public float boostShakeThreshold;
     public float boostShakeIntensity;
@@ -34,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public CameraController cam;
     public GameObject projectileBullet;
     public Transform firePoint;
+    public GameManager GM;
 
     void Awake()
     {
@@ -43,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -70,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         #region Shooting
 
-        if (autoFire ? (player.GetButton("Fire1") && Time.time - fireTimeStamp > fireDelay) : player.GetButtonDown("Fire1"))
+        if (GM.autoFire ? (player.GetButton("Fire1") && Time.time - GM.fireTimeStamp > GM.fireDelay) : player.GetButtonDown("Fire1"))
             ShootProjectile();
 
         #endregion
@@ -78,23 +71,23 @@ public class PlayerController : MonoBehaviour
     Vector3 GetBulletTarget()
     {
         Ray trajectory = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(trajectory, out RaycastHit hit, shotRange))
+        if (Physics.Raycast(trajectory, out RaycastHit hit, GM.shotRange))
         {
             if(!hit.collider.gameObject.CompareTag("PlayerBullet") &&
                !hit.collider.gameObject.CompareTag("EnemyBullet")) //Disable aiming at bullets
                 return hit.point;
         }
-        return transform.position + (transform.forward * shotRange);
+        return transform.position + (transform.forward * GM.shotRange);
     }
 
     void ShootProjectile()
     {
-        if (canShoot)
+        if (GM.canShoot)
         {
-            fireTimeStamp = Time.time;
+            GM.fireTimeStamp = Time.time;
             GameObject newBullet = Instantiate(projectileBullet, firePoint.position, Quaternion.identity);
             Vector3 trajectory = GetBulletTarget() - firePoint.position;
-            newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * bulletSpeed) + rBody.velocity);
+            newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * GM.bulletSpeed) + rBody.velocity);
         }
     }
 

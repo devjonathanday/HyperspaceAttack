@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1358295874103515928}
   - component: {fileID: 55136648006110888}
   m_Layer: 13
-  m_Name: ShieldBubble
+  m_Name: BaseBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,3 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40686788f3a434d468ce12eb827569bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shrinkSpeed: 2
+  shotType: 0
+  GM: {fileID: 0}

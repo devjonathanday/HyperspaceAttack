@@ -4,24 +4,44 @@ using UnityEngine;
 
 public class S_ShieldZone : MonoBehaviour
 {
-    private bool CharacterInside;
+    private bool characterInside;
     public float shrinkSpeed;
+    public GameManager.SHOTTYPE shotType;
+    public GameManager GM;
+
+    private void Start()
+    {
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
-            CharacterInside = true;
+        {
+            characterInside = true;
+            GM.canShoot = true;
+            GM.ShotType = shotType;
+        }
     }
+
+    //Only uncomment if collider messages start missing
+    //void OnTriggerStay(Collider collision)
+    //{
+    //    DUPLICATE OF OnTriggerEnter()
+    //}
 
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
-            CharacterInside = false;
+        {
+            characterInside = false;
+            GM.canShoot = false;
+        }
     }
 
     void ShrinkZone()
     {
-        if (CharacterInside)
+        if (characterInside)
         {
             transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
             if (transform.localScale.x <= 0)

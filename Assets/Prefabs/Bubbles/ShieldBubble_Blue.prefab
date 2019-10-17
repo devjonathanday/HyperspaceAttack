@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1358295874103515929, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: m_Name
-      value: ShieldBubble
+      value: ShieldBubble_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 1358295874103515933, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
@@ -66,6 +66,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: shrinkSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7afe9c44df639347804de935e953a88, type: 3}
