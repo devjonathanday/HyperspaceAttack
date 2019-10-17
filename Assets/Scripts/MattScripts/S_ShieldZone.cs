@@ -5,14 +5,7 @@ using UnityEngine;
 public class S_ShieldZone : MonoBehaviour
 {
 
-   
-
-
-
-    private bool CharacterInside = true;
-    private float CurrentTime;
-
-
+    private bool CharacterInside;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +14,16 @@ public class S_ShieldZone : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (collision.other.tag == "PlayerCharacter")
+        if (collision.gameObject.tag == "Player")
             CharacterInside = true;
         
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit(Collider collision)
     {
-        if (collision.other.tag == "PlayerCharacter")
+        if (collision.gameObject.tag == "Player")
             CharacterInside = false; 
     }
 
