@@ -112,97 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &86317967
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 86317971}
-  - component: {fileID: 86317970}
-  - component: {fileID: 86317969}
-  - component: {fileID: 86317968}
-  m_Layer: 0
-  m_Name: Sphere (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &86317968
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86317967}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &86317969
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86317967}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9b4aaad13db768c4caa54db61ecf6ce1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &86317970
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86317967}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &86317971
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86317967}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.432, y: -0.17699999, z: 0.82}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150560761
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 150560761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -30.1, y: 22.8, z: 3.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -379,7 +288,7 @@ GameObject:
   - component: {fileID: 680203924}
   - component: {fileID: 680203923}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 1164599873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.2, y: -14.3, z: -25.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -740,7 +649,7 @@ RectTransform:
   m_Children:
   - {fileID: 323962636}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -833,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 1395674930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 43.1, y: -29.3, z: 1.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1008,7 +917,10 @@ MonoBehaviour:
       _name: Player0
       _descriptiveName: Player0
       _startPlaying: 1
-      _defaultJoystickMaps: []
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
       _defaultMouseMaps:
       - _enabled: 1
         _categoryId: 0
@@ -1034,8 +946,8 @@ MonoBehaviour:
       _name: Horizontal
       _type: 0
       _descriptiveName: Horizontal
-      _positiveDescriptiveName: d
-      _negativeDescriptiveName: a
+      _positiveDescriptiveName: Right
+      _negativeDescriptiveName: Left
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
@@ -1043,8 +955,8 @@ MonoBehaviour:
       _name: Vertical
       _type: 0
       _descriptiveName: Vertical
-      _positiveDescriptiveName: w
-      _negativeDescriptiveName: s
+      _positiveDescriptiveName: Ascend
+      _negativeDescriptiveName: Descend
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
@@ -1052,8 +964,8 @@ MonoBehaviour:
       _name: MouseX
       _type: 0
       _descriptiveName: MouseX
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
+      _positiveDescriptiveName: LookRight
+      _negativeDescriptiveName: LookLeft
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
@@ -1061,8 +973,8 @@ MonoBehaviour:
       _name: MouseY
       _type: 0
       _descriptiveName: MouseY
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
+      _positiveDescriptiveName: LookUp
+      _negativeDescriptiveName: LookDown
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
@@ -1075,6 +987,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 6
+      _name: Forward
+      _type: 0
+      _descriptiveName: Forward
+      _positiveDescriptiveName: Forward
+      _negativeDescriptiveName: Backward
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -1084,19 +1005,19 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 0000000001000000020000000300000004000000
+        actionIds: 000000000600000001000000020000000300000004000000
     inputBehaviors:
     - _id: 0
       _name: Default
       _joystickAxisSensitivity: 1
       _digitalAxisSimulation: 1
-      _digitalAxisSnap: 1
+      _digitalAxisSnap: 0
       _digitalAxisInstantReverse: 0
-      _digitalAxisGravity: 3
-      _digitalAxisSensitivity: 3
+      _digitalAxisGravity: 1000
+      _digitalAxisSensitivity: 1000
       _mouseXYAxisMode: 0
       _mouseOtherAxisMode: 0
-      _mouseXYAxisSensitivity: 1
+      _mouseXYAxisSensitivity: 0.2
       _mouseXYAxisDeltaCalc: 0
       _mouseOtherAxisSensitivity: 1
       _customControllerAxisSensitivity: 1
@@ -1153,9 +1074,31 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 6
         _elementType: 0
         _elementIdentifierId: 1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: 10
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: 12
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
@@ -1227,7 +1170,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 6
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
@@ -1238,13 +1181,35 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 6
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
         _invert: 0
         _axisContribution: 1
         _keyboardKeyCode: 115
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 101
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 113
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -1278,12 +1243,23 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: 3
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     customControllerMaps: []
     customControllers: []
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 2
-    actionIdCounter: 5
+    actionIdCounter: 7
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -1333,9 +1309,9 @@ Rigidbody:
   m_AngularDrag: 1000
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &1847978251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1398,7 @@ Transform:
   m_GameObject: {fileID: 1847978251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.9316406, y: 0.104590625, z: 24.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1519,7 +1495,7 @@ Transform:
   m_GameObject: {fileID: 2097338427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.79, y: 6.6, z: -31.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1699,8 +1675,29 @@ PrefabInstance:
     - target: {fileID: 5409311789372054590, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
         type: 3}
       propertyPath: lookSpeed
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5409311789372054590, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
+        type: 3}
+      propertyPath: shotRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409311789372054590, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409311789372054590, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
+        type: 3}
+      propertyPath: projectileBullet
+      value: 
+      objectReference: {fileID: 1160188720068180210, guid: 82b349aef3c0947428da5f5dc21c4d9e,
+        type: 3}
+    - target: {fileID: 5409311789372054590, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
+        type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 1157602529}
     - target: {fileID: 5409311788846687807, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
         type: 3}
       propertyPath: m_ForceIntoRT
