@@ -999,11 +999,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbles:
-  - {fileID: 3917932335965948315, guid: b1652f629753b2641bf5430d4731f64c, type: 3}
-  - {fileID: 7219974207578220530, guid: 4148a741c8fee6b40a4027d5cde2140a, type: 3}
-  - {fileID: 6583318366632802574, guid: 5afdb5aaef320e74ab59009967a56d0b, type: 3}
-  bubbleSpawnCount: 20
-  bubbleSpawnRadius: {x: 50, y: 200}
+  - {fileID: 5435408352422354076, guid: ea5699336d04012498a54758ea3af970, type: 3}
+  - {fileID: 2800935429426042904, guid: d723e52d0c657dd45b86db3baec13aa0, type: 3}
+  - {fileID: 6519594883992367950, guid: d7ec79df7166f1b43a4dc7661fef2855, type: 3}
+  bubbleSpawnCount: 10
+  bubbleSpawnRadius: {x: 20, y: 100}
 --- !u!4 &2037550532
 Transform:
   m_ObjectHideFlags: 0

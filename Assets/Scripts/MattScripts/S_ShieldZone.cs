@@ -4,47 +4,33 @@ using UnityEngine;
 
 public class S_ShieldZone : MonoBehaviour
 {
-
     private bool CharacterInside;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    public float shrinkSpeed;
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
             CharacterInside = true;
-        
     }
 
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
-            CharacterInside = false; 
+            CharacterInside = false;
     }
-
 
     void ShrinkZone()
     {
         if (CharacterInside)
         {
-            transform.localScale -= new Vector3(Time.deltaTime,0,Time.deltaTime);
+            transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
             if (transform.localScale.x <= 0)
                 Destroy(gameObject);
         }
     }
-    // Update is called once per frame
+
     void Update()
     {
         ShrinkZone();
     }
-
-    
-
-
-    
 }
