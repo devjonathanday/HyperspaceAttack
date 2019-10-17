@@ -5,8 +5,7 @@ using UnityEngine;
 public class S_ShieldZone : MonoBehaviour
 {
 
-    public float TimeToDecrease;//Time until zone disappears
-    public Vector3 ShrinkSpeed; //How much to shrink the scale every tick
+   
 
 
 
@@ -18,7 +17,7 @@ public class S_ShieldZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CurrentTime = TimeToDecrease;
+
     }
 
 

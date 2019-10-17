@@ -80,7 +80,8 @@ public class PlayerController : MonoBehaviour
         Ray trajectory = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(trajectory, out RaycastHit hit, shotRange))
         {
-            if(!hit.collider.gameObject.CompareTag("Bullet")) //Disable aiming at bullets
+            if(!hit.collider.gameObject.CompareTag("PlayerBullet") &&
+               !hit.collider.gameObject.CompareTag("EnemyBullet")) //Disable aiming at bullets
                 return hit.point;
         }
         return transform.position + (transform.forward * shotRange);
