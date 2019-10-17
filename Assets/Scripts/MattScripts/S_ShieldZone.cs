@@ -7,21 +7,19 @@ public class S_ShieldZone : MonoBehaviour
     private bool characterInside;
     public float shrinkSpeed;
     public GameManager.SHOTTYPE shotType;
+    public GameObject player;
     public GameManager GM;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            characterInside = true;
-            GM.canShoot = true;
-            GM.ShotType = shotType;
-        }
+        if (collision.gameObject == player)
+            EnableShooting();
     }
 
     //Only uncomment if collider messages start missing
@@ -32,11 +30,8 @@ public class S_ShieldZone : MonoBehaviour
 
     void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            characterInside = false;
-            GM.canShoot = false;
-        }
+        if (collision.gameObject == player)
+            DisableShooting();
     }
 
     void ShrinkZone()
@@ -45,12 +40,27 @@ public class S_ShieldZone : MonoBehaviour
         {
             transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
             if (transform.localScale.x <= 0)
+            {
                 Destroy(gameObject);
+                DisableShooting();
+            }
         }
     }
 
     void Update()
     {
         ShrinkZone();
+    }
+
+    public void EnableShooting()
+    {
+        characterInside = true;
+        GM.canShoot = true;
+        GM.ShotType = shotType;
+    }
+    public void DisableShooting()
+    {
+        characterInside = false;
+        GM.canShoot = false;
     }
 }
