@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736019412383021040}
   - component: {fileID: 8565864567682280722}
+  - component: {fileID: 8550606636542005230}
   m_Layer: 0
   m_Name: ShieldZone
   m_TagString: Untagged
@@ -138,3 +139,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8550606636542005230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8953602574759038443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40686788f3a434d468ce12eb827569bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeToDecrease: 0
+  ShrinkSpeed: {x: 0, y: 0, z: 0}
