@@ -10,6 +10,9 @@ public class S_ShieldZone : MonoBehaviour
     public GameObject player;
     public GameManager GM;
 
+    public Color screenTint;
+
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -57,10 +60,12 @@ public class S_ShieldZone : MonoBehaviour
         characterInside = true;
         GM.canShoot = true;
         GM.ShotType = shotType;
+        GM.EnableScreenTint(screenTint);
     }
     public void DisableShooting()
     {
         characterInside = false;
         GM.canShoot = false;
+        GM.DisableScreenTint();
     }
 }

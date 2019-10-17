@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class GameManager : MonoBehaviour
 
     public int score;
     public bool godMode;
+
+    public PostProcessVolume ppVolume;
+    public ColorGrading colorGrading;
+    public Color defaultScreenColor;
+    public Color tintScreenColor;
+    public float currentColorScale;
+    public float desiredColorScale;
+    public float colorLerp;
 
     [Header("Shooting")]
     SHOTTYPE shotType;
@@ -36,6 +45,10 @@ public class GameManager : MonoBehaviour
     public float fireTimeStamp;
     public float fireDelay;
 
+    private void Awake()
+    {
+        colorGrading.enabled.Override(true);
+    }
     private void Update()
     {
         if (godMode)
@@ -44,5 +57,18 @@ public class GameManager : MonoBehaviour
             canShoot = true;
             autoFire = true;
         }
+
+        currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
+        colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
+
+    }
+
+    public void EnableScreenTint(Color color)
+    {
+        tintScreenColor = color;
+    }
+    public void DisableScreenTint()
+    {
+        tintScreenColor = defaultScreenColor;
     }
 }
