@@ -19,9 +19,14 @@ public class PlayerController : MonoBehaviour
     public float shotRange; //Distance of raycast from camera to hit point
     public float bulletSpeed;
 
+    [Header("Visuals")]
+    public float boostShakeThreshold;
+    public float boostShakeIntensity;
+    public float boostShakeDuration;
+
     [Header("References")]
     private Player player;
-
+    public CameraController cam;
     public GameObject projectileBullet;
     public Transform firePoint;
 
@@ -37,26 +42,40 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        #region Input
+        #region Camera
 
-        //Camera Movement
         mouseDelta.x = player.GetAxis("MouseX");
         mouseDelta.y = player.GetAxis("MouseY");
-
         transform.Rotate(mouseDelta.y * (invertYAxis ? lookSpeed : -lookSpeed), mouseDelta.x * lookSpeed, 0);
 
-        //Flying Movement
+        #endregion
+
+        #region Flying
+
         inputVector.x = player.GetAxis("Horizontal");
         inputVector.y = player.GetAxis("Vertical");
         inputVector.z = player.GetAxis("Forward");
 
+        if (inputVector.y > boostShakeThreshold)
+            cam.ScreenShake(boostShakeIntensity, boostShakeDuration);
+
         rBody.AddRelativeForce(inputVector.normalized * moveSpeed);
 
-        //Shooting
+        #endregion
+
+        #region Shooting
+
         if (player.GetButtonDown("Fire1"))
             ShootProjectile();
 
         #endregion
+    }
+    Vector3 GetBulletTarget()
+    {
+        Ray trajectory = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(trajectory, out RaycastHit hit, shotRange))
+            return hit.point;
+        else return transform.position + (transform.forward * shotRange);
     }
 
     void ShootProjectile()
@@ -66,11 +85,4 @@ public class PlayerController : MonoBehaviour
         newBullet.GetComponent<Rigidbody>().AddForce(trajectory.normalized * bulletSpeed);
     }
 
-    Vector3 GetBulletTarget()
-    {
-        Ray trajectory = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(trajectory, out RaycastHit hit, shotRange))
-            return hit.point;
-        else return transform.position + (transform.forward * shotRange);
-    }
 }
