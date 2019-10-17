@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Physics")]
     public Rigidbody rBody;
     public float moveSpeed;
+    public float shotRange; //Distance of raycast from camera to hit point
 
     [Header("References")]
     private Player player;
@@ -33,8 +34,8 @@ public class PlayerController : MonoBehaviour
         #region Input
 
         //Camera Movement
-        mouseDelta.x = Input.GetAxis("Mouse X");
-        mouseDelta.y = Input.GetAxis("Mouse Y");
+        mouseDelta.x = player.GetAxis("MouseX");
+        mouseDelta.y = player.GetAxis("MouseY");
 
         transform.Rotate(mouseDelta.y * (invertYAxis ? lookSpeed : -lookSpeed), mouseDelta.x * lookSpeed, 0);
 
