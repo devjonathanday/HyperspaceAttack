@@ -229,7 +229,7 @@ public class AIBehaviours : MonoBehaviour //Implementation
             }
 
             float r = agent.hit.collider.transform.localScale.x / 2;
-            float s = Vector3.Angle(agent.tr.up, Vector3.right);
+            float s = Random.Range(-180f, 180f);
             float p = agent.spherePadding;
 
             agent.orbitLocs = new Vector3[(int)Mathf.Ceil(r * 2 / agent.sphereStep)];

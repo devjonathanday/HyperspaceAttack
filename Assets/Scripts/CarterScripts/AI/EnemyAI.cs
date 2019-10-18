@@ -8,13 +8,16 @@ public class EnemyAI : MonoBehaviour
     [Header("Debug Properties")]
     public uint ID;
     public Type type;
+    public GameManager gm;
+    public GameObject explosionParticle;
 
     [Header("Components")]
     public Transform tr;
     public Rigidbody rb;
 
     [Header("Enemy Settings")]
-    public float damage;
+    public int damage;
+    public int score;
     public float seekSpeed;
     public float seekDist;
     public float chaseSpeed;
@@ -42,5 +45,35 @@ public class EnemyAI : MonoBehaviour
     public float currStep;
     public int currIndx;
     public bool isOrbiting;
-    public bool itUp = true;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision with: " + collision.gameObject.tag + " on layer: " + collision.gameObject.layer);
+        if(collision.gameObject.layer == 9)
+        {
+            S_HealthComponent t = collision.gameObject.GetComponent<S_HealthComponent>();
+            t.TakeDamage(damage);
+            Deactivate(false);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triggered with: " + other.gameObject.tag + " on layer: " + other.gameObject.layer);
+        if(other.gameObject.layer == 10)
+        {
+            Deactivate(true);
+        }
+    }
+
+    void Deactivate(bool getScore)
+    {
+        if (getScore)
+        {
+            //gm.Score += score /* * gm.multiplier */;
+        }
+        Instantiate<GameObject>(explosionParticle);
+        gameObject.SetActive(false);
+    }
 }
