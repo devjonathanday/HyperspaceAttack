@@ -419,14 +419,15 @@ MonoBehaviour:
   - {fileID: 2100000, guid: fb1facd8f9d7d7744a75643ea06ae899, type: 2}
   - {fileID: 2100000, guid: 575a8ace5fc82d44db2a88ee7b42c57c, type: 2}
   - {fileID: 2100000, guid: 80282bf52bc85b84eafeaa240be454a8, type: 2}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 5238897777802718694}
+  finalScoreText: {fileID: 5238897777802718694}
   enterBubbleSound: {fileID: 8300000, guid: d3904ebe13a700a47a693480f4aafc00, type: 3}
   exitBubbleSound: {fileID: 8300000, guid: 742cd860e7a49004a841c536216e125c, type: 3}
   audioSource: {fileID: 1161067541}
   canShoot: 0
   autoFire: 0
   shotRange: 100
-  bulletSpeed: 3000
+  bulletSpeed: 5000
   fireTimeStamp: 0
   fireDelay: 0.25
   active: 1
@@ -882,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1592715295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,8 +932,8 @@ Canvas:
   m_GameObject: {fileID: 1592715294}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1101958347}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1133,8 +1134,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -29.91}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -36.8}
+  m_SizeDelta: {x: 200, y: 22.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5238897777802718694
 MonoBehaviour:
@@ -1156,7 +1157,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Score
+  m_text: 'Final Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e82a9a77b9f5f6a41b5d5678ca682588, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d7b6abc6f935acf4ebbdd852a668c7b7, type: 2}
@@ -1184,8 +1185,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1199,10 +1200,10 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1225,10 +1226,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5238897777802718694}
-    characterCount: 5
+    characterCount: 14
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1793,7 +1794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60.2}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7043021150356493540

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         {
             score = value;
             scoreText.text = "Score: " + score;
+            finalScoreText.text = "Final Score: " + score;
         }
     }
     public bool godMode;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     private List<Material> gunMaterials = new List<Material>();
     public Material[] gunGlassMaterials;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
 
     public AudioClip enterBubbleSound;
     public AudioClip exitBubbleSound;
