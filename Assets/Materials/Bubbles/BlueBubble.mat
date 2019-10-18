@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bubble_tris
+  m_Name: BlueBubble
   m_Shader: {fileID: 4800000, guid: fb9154c3fa98a194885a5d6d2747cf49, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -76,10 +76,11 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _fresnelstrength: 3
+    - _fresnelstrength: 1
     - _speed: 0.115
     - _transparency: 2.7
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _color: {r: 19.037521, g: 19.037521, b: 19.037521, a: 1}
+    - _node_2181: {r: 0, g: 1, b: 1, a: 1}
