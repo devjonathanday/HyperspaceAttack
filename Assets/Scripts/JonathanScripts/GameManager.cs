@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class GameManager : MonoBehaviour
     public GameObject MyTitleScreen;
     public GameObject MyControllerMenu;
     public GameObject MyKeyboardMenu;
+    public GameObject MyStartButton;
+    public GameObject MyMouseKeyboardButton;
+    public GameObject MyMenuButton;
+    public EventSystem eventSystem;
    
     
     public SHOTTYPE ShotType
@@ -97,6 +102,7 @@ public class GameManager : MonoBehaviour
     public float fireTimeStamp;
     public float fireDelay;
     public bool active;
+    
 
     private void Awake()
     {
@@ -172,12 +178,14 @@ public class GameManager : MonoBehaviour
         MyTitleScreen.SetActive(false);
         MyControllerMenu.SetActive(true);
         MyBackButton.SetActive(true);
+        eventSystem.SetSelectedGameObject(MyMouseKeyboardButton);
     }
 
    public void MouseKeyboardButtonPressed()
     {
         MyControllerMenu.SetActive(false);
         MyKeyboardMenu.SetActive(true);
+        eventSystem.SetSelectedGameObject(MyMenuButton);
     }
 
     public void MainMenuButtonPressed()
@@ -185,6 +193,7 @@ public class GameManager : MonoBehaviour
         MyKeyboardMenu.SetActive(false);
         MyTitleScreen.SetActive(true);
         MyBackButton.SetActive(false);
+        eventSystem.SetSelectedGameObject(MyStartButton);
     }
     public void BackButtonPressed()
     {
@@ -194,6 +203,7 @@ public class GameManager : MonoBehaviour
             MyControllerMenu.SetActive(false);
             MyTitleScreen.SetActive(true);
             MyBackButton.SetActive(false);
+            eventSystem.SetSelectedGameObject(MyStartButton);
         }
     }
 
