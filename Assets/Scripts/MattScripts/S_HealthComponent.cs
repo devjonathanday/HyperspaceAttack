@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class S_HealthComponent : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class S_HealthComponent : MonoBehaviour
     public Canvas MyCanvas;
     public GameManager MyGameManager;
     private int CurrentHealth;
+    public RawImage healthFlash;
+    private Color currentFlashColor;
+    public Color flashColor;
+    public float lerp;
 
     private S_HealthCanvas MyCanvasHealth;
 
@@ -20,6 +25,7 @@ public class S_HealthComponent : MonoBehaviour
 
     public void TakeDamage(int DamageToTake)
     {
+        currentFlashColor = flashColor;
         CurrentHealth = CurrentHealth - DamageToTake;
         MyCanvasHealth.PlayerHasTakenDamage();
         if (CurrentHealth <= 0)
@@ -29,11 +35,13 @@ public class S_HealthComponent : MonoBehaviour
     void Die()
     {
         MyCanvasHealth.PlayerDied();
-        //MyGameManager.colorGrading.saturation.value = 0;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T)) TakeDamage(1);
+
+        currentFlashColor = Color.Lerp(currentFlashColor, Color.clear, lerp);
+        healthFlash.color = currentFlashColor;
     }
 }
