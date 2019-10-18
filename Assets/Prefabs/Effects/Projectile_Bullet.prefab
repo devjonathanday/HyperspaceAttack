@@ -69,7 +69,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Time: 1
+  m_Time: 0.25
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -4890,11 +4890,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e9feb75d63486479aa4545a57ee896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   lifeTime: 3
   deathDuration: 1
   rBody: {fileID: 6375833074532329128}
   explosionEffect: {fileID: 4329178265104709945, guid: d287528260e8bbd44bd8c2fc49f7abc2,
     type: 3}
+  drag: 0
 --- !u!1 &7946441801196212371
 GameObject:
   m_ObjectHideFlags: 0
@@ -9779,8 +9781,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0.5019608, b: 0, a: 1}
-  m_Intensity: 0.5
-  m_Range: 3
+  m_Intensity: 0.25
+  m_Range: 2
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

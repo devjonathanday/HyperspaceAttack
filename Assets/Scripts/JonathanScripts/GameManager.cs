@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         {
             score = value;
             scoreText.text = "Score: " + score;
+            finalScoreText.text = "Final Score: " + score;
         }
     }
     public bool godMode;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     private List<Material> gunMaterials = new List<Material>();
     public Material[] gunGlassMaterials;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
 
     public AudioClip enterBubbleSound;
     public AudioClip exitBubbleSound;
@@ -82,24 +84,31 @@ public class GameManager : MonoBehaviour
     public float bulletSpeed;
     public float fireTimeStamp;
     public float fireDelay;
+    public bool active;
 
     private void Awake()
     {
-        ppVolume.profile.TryGetSettings(out colorGrading);
-        colorGrading.enabled.Override(true);
-        gunRenderer.GetMaterials(gunMaterials);
+        if (active)
+        {
+            ppVolume.profile.TryGetSettings(out colorGrading);
+            colorGrading.enabled.Override(true);
+            gunRenderer.GetMaterials(gunMaterials);
+        }
     }
     private void Update()
     {
-        if (godMode)
+        if (active)
         {
-            shotType = SHOTTYPE.AutoFire;
-            canShoot = true;
-            autoFire = true;
-        }
+            if (godMode)
+            {
+                shotType = SHOTTYPE.AutoFire;
+                canShoot = true;
+                autoFire = true;
+            }
 
-        currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
-        colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
+            currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
+            colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
+        }
     }
 
     public void EnableScreenTint(Color color)
@@ -125,7 +134,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
     }
-
+    public void StartButtonClicked()
+    {
+        SceneManager.LoadScene("JonathanTest");
+    }
     public void RestartButtonClicked()
     {
         SceneManager.LoadScene("JonathanTest");
