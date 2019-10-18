@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (getScore)
         {
-            //gm.Score += score /* * gm.multiplier */;
+            gm.Score += (int)Mathf.Ceil(score * gm.multiplier);
         }
         Instantiate<GameObject>(explosionParticle);
         gameObject.SetActive(false);

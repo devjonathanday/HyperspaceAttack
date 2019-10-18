@@ -9,11 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6003310441346130738}
-  - component: {fileID: 6003310441346130701}
-  - component: {fileID: 6003310441346130700}
-  - component: {fileID: 6003310441346130703}
   - component: {fileID: 6003310441346130702}
   - component: {fileID: 6003310441346130697}
+  - component: {fileID: 6271917922290004500}
   m_Layer: 11
   m_Name: Chaser
   m_TagString: Enemy
@@ -33,67 +31,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8016646134317634703}
+  - {fileID: 4513992604530574487}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6003310441346130701
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003310441346130696}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6003310441346130700
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003310441346130696}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &6003310441346130703
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003310441346130696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6003310441346130702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,12 +70,12 @@ MonoBehaviour:
     type: 3}
   tr: {fileID: 6003310441346130738}
   rb: {fileID: 6003310441346130702}
-  damage: 0
-  score: 0
+  damage: 1
+  score: 100
   seekSpeed: 800
   seekDist: 300
   chaseSpeed: 500
-  chaseDist: 100
+  chaseDist: 20
   ramSpeed: 50
   rotSpeed: 250
   ramDist: 5
@@ -143,13 +84,27 @@ MonoBehaviour:
   brakeMultiplier: 0.1
   blockDist: 10
   sphereStep: 0.05
-  spherePadding: 4
+  spherePadding: 5
   orbitSpeed: 20
   target: {fileID: 0}
   orbitLocs: []
   currStep: 0
   currIndx: 0
   isOrbiting: 0
+--- !u!136 &6271917922290004500
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003310441346130696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.93
+  m_Height: 4.08
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8668742186185464240
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8016646134317634703}
-  - component: {fileID: 3007046467817887813}
+  - component: {fileID: 2349944850830722569}
   m_Layer: 15
   m_Name: EnemyMask
   m_TagString: Untagged
@@ -181,8 +136,8 @@ Transform:
   m_Father: {fileID: 6003310441346130738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3007046467817887813
-SphereCollider:
+--- !u!136 &2349944850830722569
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -191,6 +146,74 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.58
+  m_Height: 4.74
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &4513992604530974231
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6003310441346130738}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d75b5b586f1d4c944ae3f0afaeee7ac8, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c463108856f77e468f3bf71b1ee9e79, type: 3}
+--- !u!4 &4513992604530574487 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 0c463108856f77e468f3bf71b1ee9e79,
+    type: 3}
+  m_PrefabInstance: {fileID: 4513992604530974231}
+  m_PrefabAsset: {fileID: 0}

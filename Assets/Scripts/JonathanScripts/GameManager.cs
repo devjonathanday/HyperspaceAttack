@@ -30,7 +30,13 @@ public class GameManager : MonoBehaviour
     public float desiredColorScale;
     public float colorLerp;
     public float colorSettleAmount;
+    public float difficulty = 1;
+    public float difficultyStep;
+    public float multiplier = 1;
+    public float multiplierStep;
+    public float arenaRadius;
     public GameObject currentBullet;
+    public GameObject playerBody;
     public MeshRenderer gunRenderer;
     private List<Material> gunMaterials = new List<Material>();
     public Material[] gunGlassMaterials;
@@ -108,6 +114,9 @@ public class GameManager : MonoBehaviour
 
             currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
             colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
+
+            difficulty += IncreaseDifficulty(difficultyStep);
+            multiplier += IncreaseMultiplier(multiplierStep);
         }
     }
 
@@ -141,5 +150,15 @@ public class GameManager : MonoBehaviour
     public void RestartButtonClicked()
     {
         SceneManager.LoadScene("JonathanTest");
+    }
+
+    private float IncreaseDifficulty(float difficultyStep)
+    {
+        return difficultyStep * Time.deltaTime;
+    }
+
+    private float IncreaseMultiplier(float multiplierStep)
+    {
+        return multiplierStep * Time.deltaTime;
     }
 }

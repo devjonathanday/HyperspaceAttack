@@ -6,6 +6,16 @@ using static AIBehaviours;
 
 public class EnemyAIManager : MonoBehaviour
 {
+    public GameManager gm;
+    public GameObject chaserPrefab;
+    public float enemySpawnRadius;
+
+    public int maxEnemies;
+    public int maxEnemiesPerDifficulty;
+    public int currActiveEnemies;
+
+
+
     [SerializeField] List<EnemyAI> agents;
 
     IBehaviour chaserBehaviour;
@@ -61,19 +71,50 @@ public class EnemyAIManager : MonoBehaviour
         return root;
     }
 
+    private EnemyAI GenerateEnemy()
+    {
+        var g = Instantiate<GameObject>(chaserPrefab, Random.onUnitSphere * (gm.arenaRadius + enemySpawnRadius), Quaternion.identity);
+        var agent = g.GetComponent<EnemyAI>();
+        agent.gm = gm;
+        agent.ID = (uint)Random.Range(1, 10000);
+        agent.target = gm.playerBody;
+        return agent;
+    }
+
     private void Start()
     {
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            agents.Add(g.GetComponent<EnemyAI>());
-        }
-
         chaserBehaviour = PopulateBehaviours(EnemyAI.Type.Chaser);
+        for(int i = 0; i < maxEnemies; i++)
+        {
+            agents.Add(GenerateEnemy());
+            agents[i].gameObject.SetActive(false);
+        }
     }
 
 
     void Update()
     {
+        currActiveEnemies = 0;
+        foreach(EnemyAI agent in agents)
+        {
+            if (agent.gameObject.activeInHierarchy)
+            {
+                currActiveEnemies++;
+            }
+        }
+
+        int iterator = 0;
+        while(currActiveEnemies < (int)(maxEnemiesPerDifficulty * gm.difficulty))
+        {
+            if (!agents[iterator].gameObject.activeInHierarchy)
+            {
+                agents[iterator].transform.position = Random.onUnitSphere * (gm.arenaRadius + enemySpawnRadius);
+                agents[iterator].gameObject.SetActive(true);
+                currActiveEnemies++;
+                iterator++;
+            }
+        }
+
         foreach(EnemyAI agent in agents)
         {
             switch (agent.type)
