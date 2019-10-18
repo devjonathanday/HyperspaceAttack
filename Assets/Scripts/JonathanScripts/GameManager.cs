@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public enum SHOTTYPE { Standard, AutoFire, GrenadeLauncher, Laser }
 
-    public int score;
+    private int score;
+    public int Score
+    {
+        get { return score; }
+        set
+        {
+            score = value;
+            scoreText.text = "Score: " + score;
+        }
+    }
     public bool godMode;
 
     public PostProcessVolume ppVolume;
@@ -22,6 +32,7 @@ public class GameManager : MonoBehaviour
     public MeshRenderer gunRenderer;
     private List<Material> gunMaterials = new List<Material>();
     public Material[] gunGlassMaterials;
+    public TextMeshProUGUI scoreText;
 
     public AudioClip enterBubbleSound;
     public AudioClip exitBubbleSound;
@@ -47,11 +58,13 @@ public class GameManager : MonoBehaviour
                     autoFire = true;
                     gunMaterials[1] = gunGlassMaterials[1];
                     gunRenderer.materials = gunMaterials.ToArray();
+                    fireDelay = 0.25f;
                     break;
                 case SHOTTYPE.GrenadeLauncher:
                     autoFire = false;
                     gunMaterials[1] = gunGlassMaterials[2];
                     gunRenderer.materials = gunMaterials.ToArray();
+                    fireDelay = 1;
                     break;
                 case SHOTTYPE.Laser:
                     autoFire = true;
@@ -86,7 +99,6 @@ public class GameManager : MonoBehaviour
 
         currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
         colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
-
     }
 
     public void EnableScreenTint(Color color)

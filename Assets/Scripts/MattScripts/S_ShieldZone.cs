@@ -58,11 +58,14 @@ public class S_ShieldZone : MonoBehaviour
 
     public void EnableShooting()
     {
+        if (GM.ShotType != GameManager.SHOTTYPE.Laser)
+        {
+            GM.currentBullet = bulletPrefab;
+        }
+        GM.canShoot = true;   
         characterInside = true;
-        GM.canShoot = true;
         GM.ShotType = shotType;
         GM.EnableScreenTint(screenTint);
-        GM.currentBullet = bulletPrefab;
     }
     public void DisableShooting()
     {

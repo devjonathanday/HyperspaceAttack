@@ -102,5 +102,11 @@ PrefabInstance:
       propertyPath: shotType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7946441799848013844, guid: de379ff48fe1d404a8cef46aea41ee54,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7afe9c44df639347804de935e953a88, type: 3}

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1358295874103515929, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: m_Name
-      value: ShieldBubble_Green Variant
+      value: ShieldBubble_Green
       objectReference: {fileID: 0}
     - target: {fileID: 1358295874103515933, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: shotType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
