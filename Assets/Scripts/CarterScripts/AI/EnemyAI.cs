@@ -48,7 +48,6 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision with: " + collision.gameObject.tag + " on layer: " + collision.gameObject.layer);
         if(collision.gameObject.layer == 9)
         {
             S_HealthComponent t = collision.gameObject.GetComponent<S_HealthComponent>();
@@ -60,7 +59,6 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered with: " + other.gameObject.tag + " on layer: " + other.gameObject.layer);
         if(other.gameObject.layer == 10)
         {
             Deactivate(true);

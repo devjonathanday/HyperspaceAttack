@@ -20,11 +20,10 @@ public class S_HealthCanvas : MonoBehaviour
 
     public void PlayerHasTakenDamage()
     {
-        HealthBars[CurrentHealthBar].SetActive(false);
-        CurrentHealthBar++;
-        if(CurrentHealthBar == 3)
+        if (CurrentHealthBar < 3)
         {
-            Debug.Log("Dead");
+            HealthBars[CurrentHealthBar].SetActive(false);
+            CurrentHealthBar++;
         }
     }
 
