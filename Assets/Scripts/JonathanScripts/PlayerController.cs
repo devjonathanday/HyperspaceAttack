@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     private Player player;
     public CameraController cam;
-    public GameObject projectileBullet;
     public Transform firePoint;
     public GameManager GM;
 
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             gunAnimator.SetTrigger("Shoot");
             GM.fireTimeStamp = Time.time;
-            GameObject newBullet = Instantiate(projectileBullet, firePoint.position, transform.rotation);
+            GameObject newBullet = Instantiate(GM.currentBullet, firePoint.position, transform.rotation);
             Vector3 trajectory = GetBulletTarget() - firePoint.position;
             newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * GM.bulletSpeed) + rBody.velocity);
         }
