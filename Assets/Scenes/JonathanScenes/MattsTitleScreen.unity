@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.03341825, b: 0.03341825, a: 1}
+  m_IndirectSpecularColor: {r: 0.012618708, g: 0.012618708, b: 0.012618708, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2150,6 +2150,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596627852034340898, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 773673978}
+    - target: {fileID: 8596627852034340897, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: rewiredInputManager
+      value: 
+      objectReference: {fileID: 916663823}
+    - target: {fileID: 8596627852034340897, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: m_HorizontalAxis
+      value: Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596627852034340897, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: m_VerticalAxis
+      value: Forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596627852034340897, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: m_SubmitButton
+      value: Confirm
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596627852034340897, guid: 63507ec5d306e704f976528fca74374d,
+        type: 3}
+      propertyPath: m_CancelButton
+      value: Cancel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63507ec5d306e704f976528fca74374d, type: 3}

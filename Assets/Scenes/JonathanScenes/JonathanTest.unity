@@ -429,6 +429,10 @@ MonoBehaviour:
   enterBubbleSound: {fileID: 8300000, guid: d3904ebe13a700a47a693480f4aafc00, type: 3}
   exitBubbleSound: {fileID: 8300000, guid: 742cd860e7a49004a841c536216e125c, type: 3}
   audioSource: {fileID: 1161067541}
+  MyBackButton: {fileID: 0}
+  MyTitleScreen: {fileID: 0}
+  MyControllerMenu: {fileID: 0}
+  MyKeyboardMenu: {fileID: 0}
   canShoot: 0
   autoFire: 0
   shotRange: 100
