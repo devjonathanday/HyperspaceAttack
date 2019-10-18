@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float colorSettleAmount;
     public GameObject currentBullet;
     public MeshRenderer gunRenderer;
+    private List<Material> gunMaterials = new List<Material>();
     public Material[] gunGlassMaterials;
 
     public AudioClip enterBubbleSound;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Shooting")]
     SHOTTYPE shotType;
+
     public SHOTTYPE ShotType
     {
         get { return shotType; }
@@ -38,19 +40,23 @@ public class GameManager : MonoBehaviour
             {
                 case SHOTTYPE.Standard:
                     autoFire = false;
-                    gunRenderer.materials[1] = gunGlassMaterials[0];
+                    gunMaterials[1] = gunGlassMaterials[0];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
                 case SHOTTYPE.AutoFire:
                     autoFire = true;
-                    gunRenderer.materials[1] = gunGlassMaterials[1];
+                    gunMaterials[1] = gunGlassMaterials[1];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
                 case SHOTTYPE.GrenadeLauncher:
                     autoFire = false;
-                    gunRenderer.materials[1] = gunGlassMaterials[2];
+                    gunMaterials[1] = gunGlassMaterials[2];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
                 case SHOTTYPE.Laser:
                     autoFire = true;
-                    gunRenderer.materials[1] = gunGlassMaterials[3];
+                    gunMaterials[1] = gunGlassMaterials[3];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
             }
         }
@@ -67,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         ppVolume.profile.TryGetSettings(out colorGrading);
         colorGrading.enabled.Override(true);
+        gunRenderer.GetMaterials(gunMaterials);
     }
     private void Update()
     {

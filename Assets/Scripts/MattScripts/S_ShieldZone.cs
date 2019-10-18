@@ -68,6 +68,7 @@ public class S_ShieldZone : MonoBehaviour
     {
         characterInside = false;
         GM.canShoot = false;
+        GM.ShotType = GameManager.SHOTTYPE.Standard;
         GM.DisableScreenTint();
     }
 }

@@ -239,11 +239,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7977865751319207389, guid: a6cf067ec63be6945b5b793a02fa5614,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1101958347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6cf067ec63be6945b5b793a02fa5614, type: 3}
 --- !u!1 &680203922
@@ -440,12 +435,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!20 &1101958347 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5409311788846687807, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
-    type: 3}
-  m_PrefabInstance: {fileID: 5409311790821419677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1161067538
 GameObject:
   m_ObjectHideFlags: 0
