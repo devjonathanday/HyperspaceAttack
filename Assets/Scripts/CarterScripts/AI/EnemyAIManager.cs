@@ -24,17 +24,37 @@ public class EnemyAIManager : MonoBehaviour
         {
             case EnemyAI.Type.Chaser:
                 //root
+                var blockedPath = new SequenceNode();
                 var ramPath = new SequenceNode();
                 var chasePath = new SequenceNode();
-                root.childBehaviors = PopulateBranch(ramPath, chasePath);
+                var brakePath = new SequenceNode();
+                var seekPath = new SequenceNode();
+                var reallignPath = new SequenceNode();
+                root.childBehaviors = PopulateBranch(blockedPath, ramPath, chasePath, brakePath, seekPath, reallignPath);
+
+                //blockedPath
+                IBehaviour[] blockedPathChildren = { new AgentBlocked(), new AgentGenerateSphere(),  new AgentOrbitSphere()};
+                blockedPath.childBehaviors = PopulateBranch(blockedPathChildren[0], blockedPathChildren[1], blockedPathChildren[2]);
 
                 //ramPath
-                IBehaviour[] ramPathChildren = { new AgentShouldRam(), new AgentRamTarget() };
+                IBehaviour[] ramPathChildren = {new AgentShouldRam(), new AgentRamTarget() };
                 ramPath.childBehaviors = PopulateBranch(ramPathChildren[0], ramPathChildren[1]);
 
                 //chasePath
                 IBehaviour[] chasePathChildren = { new AgentShouldChase(), new AgentChaseTarget() };
                 chasePath.childBehaviors = PopulateBranch(chasePathChildren[0], chasePathChildren[1]);
+
+                //brakePath
+                IBehaviour[] brakePathChildren = { new AgentGettingFurther(), new AgentBrake() };
+                brakePath.childBehaviors = PopulateBranch(brakePathChildren[0], brakePathChildren[1]);
+
+                //seekPath
+                IBehaviour[] seekPathChildren = { new AgentShouldSeek(), new AgentSeekTarget() };
+                seekPath.childBehaviors = PopulateBranch(seekPathChildren[0], seekPathChildren[1]);
+
+                //reallignPath
+                IBehaviour[] reallignPathChildren = { new AgentShouldReallign(), new AgentReallignToTarget(), new AgentHalt() };
+                reallignPath.childBehaviors = PopulateBranch(reallignPathChildren[0], reallignPathChildren[1], reallignPathChildren[2]);
 
                 break;
         }

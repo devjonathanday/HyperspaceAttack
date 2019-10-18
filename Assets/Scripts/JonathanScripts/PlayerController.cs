@@ -17,9 +17,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask hitScanLayers;
 
     [Header("Visuals")]
-    public float boostShakeThreshold;
-    public float boostShakeIntensity;
-    public float boostShakeDuration;
+    public float laserShakeIntensity;
+    public float laserShakeDuration;
 
     public Animator gunAnimator;
 
@@ -28,6 +27,12 @@ public class PlayerController : MonoBehaviour
     public CameraController cam;
     public Transform firePoint;
     public GameManager GM;
+    public GameObject laser;
+
+    public AudioClip orangeShot;
+    public AudioClip blueShot;
+    public AudioClip greenShot;
+    public AudioSource audioSource;
 
     void Awake()
     {
@@ -56,17 +61,27 @@ public class PlayerController : MonoBehaviour
         inputVector.y = player.GetAxis("Vertical");
         inputVector.z = player.GetAxis("Forward");
 
-        if (inputVector.y > boostShakeThreshold)
-            cam.ScreenShake(boostShakeIntensity, boostShakeDuration);
-
         rBody.AddRelativeForce(inputVector.normalized * moveSpeed, ForceMode.Acceleration);
 
         #endregion
 
         #region Shooting
 
-        if (GM.autoFire ? (player.GetButton("Fire1") && Time.time - GM.fireTimeStamp > GM.fireDelay) : player.GetButtonDown("Fire1"))
-            ShootProjectile();
+        if (GM.ShotType != GameManager.SHOTTYPE.Laser)
+        {
+            laser.SetActive(false);
+            if ((GM.autoFire ? player.GetButton("Fire1") : player.GetButtonDown("Fire1")) && Time.time - GM.fireTimeStamp > GM.fireDelay)
+                ShootProjectile();
+        }
+        else
+        {
+            if (player.GetButton("Fire1"))
+            {
+                laser.SetActive(true);
+                cam.ScreenShake(laserShakeIntensity, laserShakeDuration);
+            }
+            else laser.SetActive(false);
+        }
 
         #endregion
     }
@@ -83,11 +98,25 @@ public class PlayerController : MonoBehaviour
     {
         if (GM.canShoot)
         {
-            gunAnimator.SetTrigger("Shoot");
-            GM.fireTimeStamp = Time.time;
-            GameObject newBullet = Instantiate(GM.currentBullet, firePoint.position, transform.rotation);
-            Vector3 trajectory = GetBulletTarget() - firePoint.position;
-            newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * GM.bulletSpeed) + rBody.velocity);
+            switch(GM.ShotType)
+            {
+                case GameManager.SHOTTYPE.AutoFire:
+                    audioSource.PlayOneShot(orangeShot);
+                    gunAnimator.SetTrigger("OrangeShot");
+                    break;
+                case GameManager.SHOTTYPE.GrenadeLauncher:
+                    audioSource.PlayOneShot(blueShot);
+                    gunAnimator.SetTrigger("BlueShot");
+                    break;
+            }
+
+            if (GM.ShotType != GameManager.SHOTTYPE.Laser)
+            {
+                GM.fireTimeStamp = Time.time;
+                GameObject newBullet = Instantiate(GM.currentBullet, firePoint.position, transform.rotation);
+                Vector3 trajectory = GetBulletTarget() - firePoint.position;
+                newBullet.GetComponent<Rigidbody>().AddForce((trajectory.normalized * GM.bulletSpeed) + rBody.velocity);
+            }
         }
     }
 

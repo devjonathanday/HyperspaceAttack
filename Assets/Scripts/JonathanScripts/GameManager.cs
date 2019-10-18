@@ -2,12 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public enum SHOTTYPE { Standard, AutoFire }
+    public enum SHOTTYPE { Standard, AutoFire, GrenadeLauncher, Laser }
 
-    public int score;
+    private int score;
+    public int Score
+    {
+        get { return score; }
+        set
+        {
+            score = value;
+            scoreText.text = "Score: " + score;
+            finalScoreText.text = "Final Score: " + score;
+        }
+    }
     public bool godMode;
 
     public PostProcessVolume ppVolume;
@@ -19,9 +31,19 @@ public class GameManager : MonoBehaviour
     public float colorLerp;
     public float colorSettleAmount;
     public GameObject currentBullet;
+    public MeshRenderer gunRenderer;
+    private List<Material> gunMaterials = new List<Material>();
+    public Material[] gunGlassMaterials;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
+
+    public AudioClip enterBubbleSound;
+    public AudioClip exitBubbleSound;
+    public AudioSource audioSource;
 
     [Header("Shooting")]
     SHOTTYPE shotType;
+
     public SHOTTYPE ShotType
     {
         get { return shotType; }
@@ -32,9 +54,25 @@ public class GameManager : MonoBehaviour
             {
                 case SHOTTYPE.Standard:
                     autoFire = false;
+                    gunMaterials[1] = gunGlassMaterials[0];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
                 case SHOTTYPE.AutoFire:
                     autoFire = true;
+                    gunMaterials[1] = gunGlassMaterials[1];
+                    gunRenderer.materials = gunMaterials.ToArray();
+                    fireDelay = 0.25f;
+                    break;
+                case SHOTTYPE.GrenadeLauncher:
+                    autoFire = false;
+                    gunMaterials[1] = gunGlassMaterials[2];
+                    gunRenderer.materials = gunMaterials.ToArray();
+                    fireDelay = 1;
+                    break;
+                case SHOTTYPE.Laser:
+                    autoFire = true;
+                    gunMaterials[1] = gunGlassMaterials[3];
+                    gunRenderer.materials = gunMaterials.ToArray();
                     break;
             }
         }
@@ -46,24 +84,31 @@ public class GameManager : MonoBehaviour
     public float bulletSpeed;
     public float fireTimeStamp;
     public float fireDelay;
+    public bool active;
 
     private void Awake()
     {
-        ppVolume.profile.TryGetSettings(out colorGrading);
-        colorGrading.enabled.Override(true);
+        if (active)
+        {
+            ppVolume.profile.TryGetSettings(out colorGrading);
+            colorGrading.enabled.Override(true);
+            gunRenderer.GetMaterials(gunMaterials);
+        }
     }
     private void Update()
     {
-        if (godMode)
+        if (active)
         {
-            shotType = SHOTTYPE.AutoFire;
-            canShoot = true;
-            autoFire = true;
+            if (godMode)
+            {
+                shotType = SHOTTYPE.AutoFire;
+                canShoot = true;
+                autoFire = true;
+            }
+
+            currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
+            colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
         }
-
-        currentColorScale = Mathf.Lerp(currentColorScale, desiredColorScale, colorLerp);
-        colorGrading.colorFilter.value = Color.Lerp(defaultScreenColor, tintScreenColor, currentColorScale);
-
     }
 
     public void EnableScreenTint(Color color)
@@ -71,9 +116,30 @@ public class GameManager : MonoBehaviour
         tintScreenColor = color;
         currentColorScale = 1;
         desiredColorScale = colorSettleAmount;
+        audioSource.PlayOneShot(enterBubbleSound);
     }
     public void DisableScreenTint()
     {
         desiredColorScale = 0;
+        audioSource.PlayOneShot(exitBubbleSound);
+    }
+
+   public void ButtonExitClicked()
+    {
+        Application.Quit();
+    }
+
+    public void PlayerDied()
+    {
+        Time.timeScale = 0;
+
+    }
+    public void StartButtonClicked()
+    {
+        SceneManager.LoadScene("JonathanTest");
+    }
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene("JonathanTest");
     }
 }

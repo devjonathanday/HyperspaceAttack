@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1358295874103515935, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8433a8144da4d72449fe013b233c7f87, type: 2}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: shrinkSpeed
@@ -92,5 +97,16 @@ PrefabInstance:
       propertyPath: screenTint.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: shotType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7946441799848013844, guid: de379ff48fe1d404a8cef46aea41ee54,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7afe9c44df639347804de935e953a88, type: 3}
