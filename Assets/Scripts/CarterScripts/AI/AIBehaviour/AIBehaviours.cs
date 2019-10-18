@@ -149,7 +149,7 @@ public class AIBehaviours : MonoBehaviour //Implementation
     {
         public BehaviourResult DoBehaviour(EnemyAI agent)
         {
-            Ray ray = new Ray(agent.tr.position, agent.target.transform.position);
+            Ray ray = new Ray(agent.tr.position, agent.target.transform.position - agent.tr.position);
             if (Physics.Raycast(ray, out agent.hit, agent.blockDist, 1 << 13))
             {
                 return BehaviourResult.Success;
@@ -223,16 +223,61 @@ public class AIBehaviours : MonoBehaviour //Implementation
     {
         public BehaviourResult DoBehaviour(EnemyAI agent)
         {
-            float r = agent.hit.collider.transform.localScale.x;
-            float s = Vector3.Angle(agent.tr.up, Vector3.up);
-            float t;
-
-            agent.sphereLocs = new Vector3[(int)(360 / agent.sphereStep)];
-            for(int i = 0; i < agent.sphereLocs.Length; i++)
+            if (agent.isOrbiting)
             {
-                t = agent.sphereStep * (i + 1);
-                agent.sphereLocs[i] = new Vector3(r * Mathf.Cos(s) * Mathf.Sin(t), r * Mathf.Sin(s) * Mathf.Sin(t), r * Mathf.Cos(t));
+                return BehaviourResult.Success;
             }
+
+            float r = agent.hit.collider.transform.localScale.x / 2;
+            float s = Vector3.Angle(agent.tr.up, Vector3.right);
+            float p = agent.spherePadding;
+
+            agent.orbitLocs = new Vector3[(int)Mathf.Ceil(r * 2 / agent.sphereStep)];
+
+            for(int i = 0; i < agent.orbitLocs.Length; i++)
+            {
+                agent.currStep += agent.sphereStep;
+                if (agent.currStep >= r * 2)
+                {
+                    agent.currStep = 0;
+                }
+                float t = agent.sphereStep + agent.currStep;
+                agent.orbitLocs[i] = new Vector3((r + p) * Mathf.Cos(s) * Mathf.Sin(t), (r + p) * Mathf.Sin(s) * Mathf.Sin(t), (r + p) * Mathf.Cos(t)) + agent.hit.transform.position;
+            }
+
+            return BehaviourResult.Success;
+        }
+    }
+
+    public class AgentOrbitSphere : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            agent.rb.velocity = Vector3.zero;
+            agent.isOrbiting = true;
+
+            if (Vector3.Distance(agent.tr.position, agent.orbitLocs[agent.currIndx]) < 1f)
+            {
+                agent.currIndx++;
+                if(agent.currIndx >= agent.orbitLocs.Length)
+                {
+                    agent.isOrbiting = false;
+                    agent.currIndx = 0;
+                    return BehaviourResult.Success;
+                }
+            }
+
+            agent.tr.rotation = Quaternion.RotateTowards(agent.tr.rotation, Quaternion.LookRotation(agent.orbitLocs[agent.currIndx] - agent.tr.position), agent.rotSpeed);
+            agent.tr.position += agent.tr.forward * agent.orbitSpeed * Time.deltaTime;
+            return BehaviourResult.Success;
+        }
+    }
+
+    public class AgentResetOrbit : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            agent.isOrbiting = false;
             return BehaviourResult.Success;
         }
     }

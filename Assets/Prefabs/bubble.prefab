@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8176134014647354006}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7739940837124717088}
   - component: {fileID: 7524327768481434880}
   - component: {fileID: 4675873494766989997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

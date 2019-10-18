@@ -27,19 +27,20 @@ public class EnemyAI : MonoBehaviour
     [Range(0f, 1f)]
     public float brakeMultiplier;
     public float blockDist;
-    [Range(1f, 360f)]
     public float sphereStep;
     public float spherePadding;
+    public float orbitSpeed;
 
     [Header("Acquired Fields")]
     public GameObject target;
-    public Vector3 targetLoc;
 
     [HideInInspector]
     public float ? distToTarget;
     [HideInInspector]
     public RaycastHit hit;
-    [HideInInspector]
-    public Vector3[] sphereLocs;
-
+    public Vector3[] orbitLocs;
+    public float currStep;
+    public int currIndx;
+    public bool isOrbiting;
+    public bool itUp = true;
 }

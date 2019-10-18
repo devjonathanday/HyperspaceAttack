@@ -30,11 +30,14 @@ public class EnemyAIManager : MonoBehaviour
                 var brakePath = new SequenceNode();
                 var seekPath = new SequenceNode();
                 var reallignPath = new SequenceNode();
-                root.childBehaviors = PopulateBranch(ramPath, chasePath, brakePath, seekPath, reallignPath);
+                root.childBehaviors = PopulateBranch(blockedPath, ramPath, chasePath, brakePath, seekPath, reallignPath);
 
+                //blockedPath
+                IBehaviour[] blockedPathChildren = { new AgentBlocked(), new AgentGenerateSphere(),  new AgentOrbitSphere()};
+                blockedPath.childBehaviors = PopulateBranch(blockedPathChildren[0], blockedPathChildren[1], blockedPathChildren[2]);
 
                 //ramPath
-                IBehaviour[] ramPathChildren = { new AgentShouldRam(), new AgentRamTarget() };
+                IBehaviour[] ramPathChildren = {new AgentShouldRam(), new AgentRamTarget() };
                 ramPath.childBehaviors = PopulateBranch(ramPathChildren[0], ramPathChildren[1]);
 
                 //chasePath
