@@ -8,9 +8,10 @@ public class S_ShieldZone : MonoBehaviour
     public float shrinkSpeed;
     public GameManager.SHOTTYPE shotType;
     public GameObject player;
+    public GameObject bulletPrefab;
     public GameManager GM;
 
-    public Color screenTint;
+    [ColorUsage(true, true)] public Color screenTint;
 
 
     private void Start()
@@ -61,6 +62,7 @@ public class S_ShieldZone : MonoBehaviour
         GM.canShoot = true;
         GM.ShotType = shotType;
         GM.EnableScreenTint(screenTint);
+        GM.currentBullet = bulletPrefab;
     }
     public void DisableShooting()
     {

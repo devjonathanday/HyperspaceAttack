@@ -80,12 +80,12 @@ PrefabInstance:
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: screenTint.r
-      value: 1
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: screenTint.g
-      value: 0.5019608
+      value: 16.062746
       objectReference: {fileID: 0}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
@@ -97,5 +97,11 @@ PrefabInstance:
       propertyPath: screenTint.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7946441799848013844, guid: 59d10366bc3bdb04b81f8ce0beca33cc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7afe9c44df639347804de935e953a88, type: 3}
