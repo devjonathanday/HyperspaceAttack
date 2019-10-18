@@ -35,7 +35,7 @@ public class S_HealthComponent : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Get FUCKED IDIOT");
+        MyCanvasHealth.PlayerDied();
     }
 
 
@@ -44,7 +44,7 @@ public class S_HealthComponent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T)) 
         {
             TakeDamage(1);
-            Debug.Log("Shit shit shit fuck");
+
         }
             
     }

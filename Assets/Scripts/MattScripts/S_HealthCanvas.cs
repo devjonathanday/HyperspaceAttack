@@ -6,13 +6,15 @@ public class S_HealthCanvas : MonoBehaviour
 {
 
     public GameObject[] HealthBars;
+    public GameObject FailureScreen;
 
     private int CurrentHealthBar = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        Cursor.visible = false;
+        
     }
 
 
@@ -24,6 +26,13 @@ public class S_HealthCanvas : MonoBehaviour
         {
             Debug.Log("Dead");
         }
+    }
+
+    public void PlayerDied()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        FailureScreen.SetActive(true);
     }
 
     // Update is called once per frame

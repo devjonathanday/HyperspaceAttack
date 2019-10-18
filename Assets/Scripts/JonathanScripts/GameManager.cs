@@ -71,4 +71,9 @@ public class GameManager : MonoBehaviour
     {
         tintScreenColor = defaultScreenColor;
     }
+
+   public void ButtonExitClicked()
+    {
+        Application.Quit();
+    }
 }
