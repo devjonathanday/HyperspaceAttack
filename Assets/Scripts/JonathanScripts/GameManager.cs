@@ -157,11 +157,11 @@ public class GameManager : MonoBehaviour
     }
     public void StartButtonClicked()
     {
-        SceneManager.LoadScene("JonathanTest");
+        SceneManager.LoadScene("newnewnew");
     }
     public void RestartButtonClicked()
     {
-        SceneManager.LoadScene("JonathanTest");
+        SceneManager.LoadScene("newnewnew");
     }
 
     private float IncreaseDifficulty(float difficultyStep)

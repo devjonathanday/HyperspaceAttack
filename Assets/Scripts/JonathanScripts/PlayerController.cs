@@ -48,10 +48,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         #region Camera
-
-        mouseDelta.x = player.GetAxis("MouseX");
-        mouseDelta.y = player.GetAxis("MouseY");
-        transform.Rotate(mouseDelta.y * (invertYAxis ? lookSpeed : -lookSpeed), mouseDelta.x * lookSpeed, 0);
+        if (Time.timeScale != 0)
+        {
+            mouseDelta.x = player.GetAxis("MouseX");
+            mouseDelta.y = player.GetAxis("MouseY");
+            transform.Rotate(mouseDelta.y * (invertYAxis ? lookSpeed : -lookSpeed), mouseDelta.x * lookSpeed, 0);
+        }
 
         #endregion
 

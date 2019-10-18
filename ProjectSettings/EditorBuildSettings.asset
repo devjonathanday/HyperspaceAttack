@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JonathanScenes/JonathanTest.unity
-    guid: 3fbbd70dca60d674db4a342d80913c2f
+    path: Assets/Scenes/JonathanScenes/MattsTitleScreen.unity
+    guid: 949b3bb8bcb71d74b8b9c197dfdb6aef
+  - enabled: 1
+    path: Assets/Scenes/CarterScenes/newnewnew.unity
+    guid: 69c1a1e3ef86b4041a0f76aa1e747bca
   m_configObjects: {}
