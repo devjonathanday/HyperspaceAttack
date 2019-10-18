@@ -108,8 +108,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.58611584, g: 1, b: 0, a: 1}
-      key1: {r: 0.58611584, g: 1, b: 0, a: 0}
+      key0: {r: 1, g: 0.5019608, b: 0, a: 1}
+      key1: {r: 1, g: 0.5019608, b: 0, a: 0}
       key2: {r: 0, g: 1, b: 0.015686275, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 6375833074532329128}
   - component: {fileID: 8596632503157744530}
   m_Layer: 10
-  m_Name: grn_projectile
+  m_Name: Projectile_Bullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.6279184, g: 0.9056604, b: 0, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.015686275, a: 1}
+      maxColor: {r: 1, g: 0.5, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9683,8 +9683,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.27058825, g: 1, b: 0, a: 1}
-      key1: {r: 0, g: 1, b: 0.015686275, a: 0}
+      key0: {r: 1, g: 0.5, b: 0, a: 1}
+      key1: {r: 1, g: 0.5, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9760,9 +9760,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.7688679, g: 1, b: 0.77249354, a: 1}
+  m_Color: {r: 1, g: 0.5019608, b: 0, a: 1}
   m_Intensity: 0.5
-  m_Range: 1
+  m_Range: 3
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

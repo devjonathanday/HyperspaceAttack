@@ -75,12 +75,12 @@ PrefabInstance:
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: screenTint.b
-      value: 1
+      value: 23.968628
       objectReference: {fileID: 0}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
       propertyPath: screenTint.g
-      value: 1
+      value: 23.968628
       objectReference: {fileID: 0}
     - target: {fileID: 55136648006110888, guid: f7afe9c44df639347804de935e953a88,
         type: 3}
