@@ -49,4 +49,13 @@ public class BulletBehavior : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(this.gameObject.tag + " triggered with: " + other.gameObject.tag + " on layer: " + other.gameObject.layer);
+        if(other.gameObject.layer == 15)
+        {
+            Death();
+        }
+    }
 }

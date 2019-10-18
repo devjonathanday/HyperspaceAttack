@@ -18,7 +18,7 @@ public class S_HealthComponent : MonoBehaviour
         MyCanvasHealth = MyCanvas.GetComponent<S_HealthCanvas>();
     }
 
-    void TakeDamage(int DamageToTake)
+    public void TakeDamage(int DamageToTake)
     {
         CurrentHealth = CurrentHealth - DamageToTake;
         MyCanvasHealth.PlayerHasTakenDamage();
