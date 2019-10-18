@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour
     [Header("Shooting")]
     SHOTTYPE shotType;
 
+    public GameObject MyBackButton;
+    public GameObject MyTitleScreen;
+    public GameObject MyControllerMenu;
+    public GameObject MyKeyboardMenu;
+   
+    
     public SHOTTYPE ShotType
     {
         get { return shotType; }
@@ -161,4 +167,34 @@ public class GameManager : MonoBehaviour
     {
         return multiplierStep * Time.deltaTime;
     }
+    public void ControlButtonPressed()
+    {
+        MyTitleScreen.SetActive(false);
+        MyControllerMenu.SetActive(true);
+        MyBackButton.SetActive(true);
+    }
+
+   public void MouseKeyboardButtonPressed()
+    {
+        MyControllerMenu.SetActive(false);
+        MyKeyboardMenu.SetActive(true);
+    }
+
+    public void MainMenuButtonPressed()
+    {
+        MyKeyboardMenu.SetActive(false);
+        MyTitleScreen.SetActive(true);
+        MyBackButton.SetActive(false);
+    }
+    public void BackButtonPressed()
+    {
+        if(MyKeyboardMenu.activeSelf == true || MyControllerMenu.activeSelf == true)
+        {
+            MyKeyboardMenu.SetActive(false);
+            MyControllerMenu.SetActive(false);
+            MyTitleScreen.SetActive(true);
+            MyBackButton.SetActive(false);
+        }
+    }
+
 }

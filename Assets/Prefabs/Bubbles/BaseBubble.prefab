@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b19a01a65622ee2419a6066c0960dc49, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,7 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40686788f3a434d468ce12eb827569bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterInside: 0
+  currentSize: 0
+  desiredSize: 15
+  maxScale: 15
+  sizeLerp: 0.1
   shrinkSpeed: 2
+  killSize: 1
   shotType: 0
   player: {fileID: 0}
   bulletPrefab: {fileID: 0}

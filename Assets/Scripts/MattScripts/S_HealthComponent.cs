@@ -29,6 +29,7 @@ public class S_HealthComponent : MonoBehaviour
     void Die()
     {
         MyCanvasHealth.PlayerDied();
+        MyGameManager.colorGrading.saturation.value = 0;
     }
 
    

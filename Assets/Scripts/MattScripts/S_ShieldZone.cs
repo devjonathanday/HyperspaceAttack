@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class S_ShieldZone : MonoBehaviour
 {
-    private bool characterInside;
+    public bool characterInside;
+    public float currentSize;
+    public float desiredSize;
+    public float maxScale;
+    public float sizeLerp;
     public float shrinkSpeed;
+    public float killSize;
     public GameManager.SHOTTYPE shotType;
     public GameObject player;
     public GameObject bulletPrefab;
     public GameManager GM;
+    public int listID;
 
     [ColorUsage(true, true)] public Color screenTint;
 
+    public void Awake()
+    {
+        transform.localScale = Vector3.zero;
+        currentSize = 0;
+        desiredSize = maxScale;
+}
 
     private void Start()
     {
@@ -42,11 +54,11 @@ public class S_ShieldZone : MonoBehaviour
     {
         if (characterInside)
         {
-            transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
-            if (transform.localScale.x <= 0)
+            desiredSize -= Time.deltaTime * shrinkSpeed;
+            if (currentSize <= killSize)
             {
-                Destroy(gameObject);
                 DisableShooting();
+                Destroy(gameObject);
             }
         }
     }
@@ -54,6 +66,8 @@ public class S_ShieldZone : MonoBehaviour
     void Update()
     {
         ShrinkZone();
+        currentSize = Mathf.Lerp(currentSize, desiredSize, sizeLerp);
+        transform.localScale = Vector3.one * currentSize;
     }
 
     public void EnableShooting()
@@ -73,5 +87,15 @@ public class S_ShieldZone : MonoBehaviour
         GM.canShoot = false;
         GM.ShotType = GameManager.SHOTTYPE.Standard;
         GM.DisableScreenTint();
+    }
+
+    IEnumerator Spawn(float growSpeed)
+    {
+        for (int i = 0; i < 60; i++)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * maxScale, growSpeed);
+            yield return null;
+        }
+        transform.localScale = Vector3.one * maxScale;
     }
 }
