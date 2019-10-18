@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
 
     public PostProcessVolume ppVolume;
     public ColorGrading colorGrading;
-    public Color defaultScreenColor;
-    public Color tintScreenColor;
+    [ColorUsage(true, true)] public Color defaultScreenColor;
+    [ColorUsage(true, true)] public Color tintScreenColor;
     public float currentColorScale;
     public float desiredColorScale;
     public float colorLerp;
+    public float colorSettleAmount;
+    public GameObject currentBullet;
 
     [Header("Shooting")]
     SHOTTYPE shotType;
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        ppVolume.profile.TryGetSettings(out colorGrading);
         colorGrading.enabled.Override(true);
     }
     private void Update()
@@ -66,9 +69,11 @@ public class GameManager : MonoBehaviour
     public void EnableScreenTint(Color color)
     {
         tintScreenColor = color;
+        currentColorScale = 1;
+        desiredColorScale = colorSettleAmount;
     }
     public void DisableScreenTint()
     {
-        tintScreenColor = defaultScreenColor;
+        desiredColorScale = 0;
     }
 }
