@@ -24,9 +24,14 @@ public class EnemyAIManager : MonoBehaviour
         {
             case EnemyAI.Type.Chaser:
                 //root
+                var blockedPath = new SequenceNode();
                 var ramPath = new SequenceNode();
                 var chasePath = new SequenceNode();
-                root.childBehaviors = PopulateBranch(ramPath, chasePath);
+                var brakePath = new SequenceNode();
+                var seekPath = new SequenceNode();
+                var reallignPath = new SequenceNode();
+                root.childBehaviors = PopulateBranch(ramPath, chasePath, brakePath, seekPath, reallignPath);
+
 
                 //ramPath
                 IBehaviour[] ramPathChildren = { new AgentShouldRam(), new AgentRamTarget() };
@@ -35,6 +40,18 @@ public class EnemyAIManager : MonoBehaviour
                 //chasePath
                 IBehaviour[] chasePathChildren = { new AgentShouldChase(), new AgentChaseTarget() };
                 chasePath.childBehaviors = PopulateBranch(chasePathChildren[0], chasePathChildren[1]);
+
+                //brakePath
+                IBehaviour[] brakePathChildren = { new AgentGettingFurther(), new AgentBrake() };
+                brakePath.childBehaviors = PopulateBranch(brakePathChildren[0], brakePathChildren[1]);
+
+                //seekPath
+                IBehaviour[] seekPathChildren = { new AgentShouldSeek(), new AgentSeekTarget() };
+                seekPath.childBehaviors = PopulateBranch(seekPathChildren[0], seekPathChildren[1]);
+
+                //reallignPath
+                IBehaviour[] reallignPathChildren = { new AgentShouldReallign(), new AgentReallignToTarget(), new AgentHalt() };
+                reallignPath.childBehaviors = PopulateBranch(reallignPathChildren[0], reallignPathChildren[1], reallignPathChildren[2]);
 
                 break;
         }

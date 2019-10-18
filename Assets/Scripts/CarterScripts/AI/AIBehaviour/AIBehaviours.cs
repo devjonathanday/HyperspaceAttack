@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIBehaviours : MonoBehaviour
+public class AIBehaviours : MonoBehaviour //Implementation
 {
     public enum BehaviourResult
     {
@@ -15,6 +15,7 @@ public class AIBehaviours : MonoBehaviour
         BehaviourResult DoBehaviour(EnemyAI agent);
     }
 
+    //Special Nodes
     public class SequenceNode : IBehaviour
     {
         public List<IBehaviour> childBehaviors = new List<IBehaviour>();
@@ -57,7 +58,9 @@ public class AIBehaviours : MonoBehaviour
         }
     }
 
+    //End Special Nodes
 
+    //Question Nodes
     public class AgentShouldSeek : IBehaviour
     {
         public BehaviourResult DoBehaviour(EnemyAI agent)
@@ -98,7 +101,7 @@ public class AIBehaviours : MonoBehaviour
     {
         public BehaviourResult DoBehaviour(EnemyAI agent)
         {
-            if(agent.maxDist >= Vector3.Distance(agent.tr.position, agent.target.transform.position))
+            if(Vector3.Distance(agent.tr.position, agent.target.transform.position) >= agent.maxDist)
             {
                 return BehaviourResult.Success;
             }
@@ -110,7 +113,7 @@ public class AIBehaviours : MonoBehaviour
     {
         public BehaviourResult DoBehaviour(EnemyAI agent)
         {
-            if(Vector3.Angle(agent.tr.transform.forward, agent.target.transform.position - agent.tr.position) > 1f)
+            if(Vector3.Angle(agent.tr.transform.forward, agent.target.transform.position - agent.tr.position) > agent.allignDegree)
             {
                 return BehaviourResult.Success;
             }
@@ -118,6 +121,46 @@ public class AIBehaviours : MonoBehaviour
         }
     }
 
+    public class AgentGettingFurther : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            float t = Vector3.Distance(agent.tr.position, agent.target.transform.position);
+
+            if(agent.distToTarget == null)
+            {
+                agent.distToTarget = t;
+                return BehaviourResult.Failure;
+            }
+
+            if(t > agent.distToTarget)
+            {
+                agent.distToTarget = t;
+                return BehaviourResult.Success;
+            }
+            else
+            {
+                return BehaviourResult.Failure;
+            }
+        }
+    }
+
+    public class AgentBlocked : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            Ray ray = new Ray(agent.tr.position, agent.target.transform.position);
+            if (Physics.Raycast(ray, out agent.hit, agent.blockDist, 1 << 13))
+            {
+                return BehaviourResult.Success;
+            }
+            return BehaviourResult.Failure;
+        }
+    }
+
+    //End Question Nodes
+
+    //Action Nodes
 
     public class AgentChaseTarget : IBehaviour
     {
@@ -163,6 +206,33 @@ public class AIBehaviours : MonoBehaviour
         public BehaviourResult DoBehaviour(EnemyAI agent)
         {
             agent.rb.velocity = Vector3.zero;
+            return BehaviourResult.Success;
+        }
+    }
+
+    public class AgentBrake : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            agent.rb.velocity *= 1 - agent.brakeMultiplier;
+            return BehaviourResult.Success;
+        }
+    }
+
+    public class AgentGenerateSphere : IBehaviour
+    {
+        public BehaviourResult DoBehaviour(EnemyAI agent)
+        {
+            float r = agent.hit.collider.transform.localScale.x;
+            float s = Vector3.Angle(agent.tr.up, Vector3.up);
+            float t;
+
+            agent.sphereLocs = new Vector3[(int)(360 / agent.sphereStep)];
+            for(int i = 0; i < agent.sphereLocs.Length; i++)
+            {
+                t = agent.sphereStep * (i + 1);
+                agent.sphereLocs[i] = new Vector3(r * Mathf.Cos(s) * Mathf.Sin(t), r * Mathf.Sin(s) * Mathf.Sin(t), r * Mathf.Cos(t));
+            }
             return BehaviourResult.Success;
         }
     }
