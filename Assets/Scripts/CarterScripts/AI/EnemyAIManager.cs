@@ -111,8 +111,8 @@ public class EnemyAIManager : MonoBehaviour
                 agents[iterator].transform.position = Random.onUnitSphere * (gm.arenaRadius + enemySpawnRadius);
                 agents[iterator].gameObject.SetActive(true);
                 currActiveEnemies++;
-                iterator++;
             }
+            iterator++;
         }
 
         foreach(EnemyAI agent in agents)
