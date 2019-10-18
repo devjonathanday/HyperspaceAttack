@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 7946441799848013846}
   - component: {fileID: 6375833074532329128}
   - component: {fileID: 8596632503157744530}
+  - component: {fileID: 8222308712373635430}
   m_Layer: 10
   m_Name: Projectile_Bullet
   m_TagString: PlayerBullet
@@ -1453,7 +1454,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0.53333336}
+        key0: {r: 1, g: 1, b: 1, a: 0.078431375}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4877,6 +4878,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.0000100000025
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8222308712373635430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946441799848013844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e9feb75d63486479aa4545a57ee896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
+  deathDuration: 1
+  rBody: {fileID: 6375833074532329128}
+  explosionEffect: {fileID: 4329178265104709945, guid: d287528260e8bbd44bd8c2fc49f7abc2,
+    type: 3}
 --- !u!1 &7946441801196212371
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,7 +5117,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.5293352, g: 0.90588236, b: 0, a: 1}
-      maxColor: {r: 0.26842916, g: 1, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.5, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -8585,7 +8603,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 7946441801481817017}
     randomDistribution: 1

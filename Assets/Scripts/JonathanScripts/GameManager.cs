@@ -5,7 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
-    public enum SHOTTYPE { Standard, AutoFire }
+    public enum SHOTTYPE { Standard, AutoFire, GrenadeLauncher, Laser }
 
     public int score;
     public bool godMode;
@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     public float colorLerp;
     public float colorSettleAmount;
     public GameObject currentBullet;
+    public MeshRenderer gunRenderer;
+    public Material[] gunGlassMaterials;
+
+    public AudioClip enterBubbleSound;
+    public AudioClip exitBubbleSound;
+    public AudioSource audioSource;
 
     [Header("Shooting")]
     SHOTTYPE shotType;
@@ -32,9 +38,19 @@ public class GameManager : MonoBehaviour
             {
                 case SHOTTYPE.Standard:
                     autoFire = false;
+                    gunRenderer.materials[1] = gunGlassMaterials[0];
                     break;
                 case SHOTTYPE.AutoFire:
                     autoFire = true;
+                    gunRenderer.materials[1] = gunGlassMaterials[1];
+                    break;
+                case SHOTTYPE.GrenadeLauncher:
+                    autoFire = false;
+                    gunRenderer.materials[1] = gunGlassMaterials[2];
+                    break;
+                case SHOTTYPE.Laser:
+                    autoFire = true;
+                    gunRenderer.materials[1] = gunGlassMaterials[3];
                     break;
             }
         }
@@ -71,10 +87,12 @@ public class GameManager : MonoBehaviour
         tintScreenColor = color;
         currentColorScale = 1;
         desiredColorScale = colorSettleAmount;
+        audioSource.PlayOneShot(enterBubbleSound);
     }
     public void DisableScreenTint()
     {
         desiredColorScale = 0;
+        audioSource.PlayOneShot(exitBubbleSound);
     }
 
    public void ButtonExitClicked()

@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public GameManager GM;
 
+    public AudioClip orangeShot;
+    public AudioClip blueShot;
+    public AudioClip greenShot;
+    public AudioSource audioSource;
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(0);
@@ -83,7 +88,14 @@ public class PlayerController : MonoBehaviour
     {
         if (GM.canShoot)
         {
-            gunAnimator.SetTrigger("Shoot");
+            switch(GM.ShotType)
+            {
+                case GameManager.SHOTTYPE.AutoFire:
+                    audioSource.PlayOneShot(orangeShot);
+                    gunAnimator.SetTrigger("OrangeShot");
+                    break;
+            }
+            
             GM.fireTimeStamp = Time.time;
             GameObject newBullet = Instantiate(GM.currentBullet, firePoint.position, transform.rotation);
             Vector3 trajectory = GetBulletTarget() - firePoint.position;
