@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: blue_bubble
+  m_Shader: {fileID: 4800000, guid: e034465badd3a3a43b9cb61e52a654de, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _texture:
+        m_Texture: {fileID: 2800000, guid: 40f8bcb30b618e4409c7827e761ab5dd, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _fresnelstrength: 1.15
+    - _speed: 0.131
+    - _transparency: 2.15
+    m_Colors:
+    - _color: {r: 0, g: 0.5354953, b: 2, a: 1}
