@@ -7,6 +7,7 @@ public class S_HealthComponent : MonoBehaviour
     public int MaximumHealth;
 
     public Canvas MyCanvas;
+    public GameManager MyGameManager;
     private int CurrentHealth;
 
     private S_HealthCanvas MyCanvasHealth;
@@ -30,11 +31,5 @@ public class S_HealthComponent : MonoBehaviour
         MyCanvasHealth.PlayerDied();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T)) 
-        {
-            TakeDamage(1);
-        }
-    }
+   
 }

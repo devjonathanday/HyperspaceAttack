@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -117,5 +118,16 @@ public class GameManager : MonoBehaviour
    public void ButtonExitClicked()
     {
         Application.Quit();
+    }
+
+    public void PlayerDied()
+    {
+        Time.timeScale = 0;
+
+    }
+
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene("JonathanTest");
     }
 }
