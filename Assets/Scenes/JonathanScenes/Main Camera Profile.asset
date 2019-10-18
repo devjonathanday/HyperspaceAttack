@@ -34,7 +34,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 5
+    value: 3
   threshold:
     overrideState: 0
     value: 1
@@ -1400,5 +1400,5 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   kernelSize:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 3
