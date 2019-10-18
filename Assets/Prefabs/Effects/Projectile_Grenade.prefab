@@ -4891,12 +4891,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  lifeTime: 1
+  lifeTime: 0.75
   deathDuration: 0
   rBody: {fileID: 6375833074532329128}
   explosionEffect: {fileID: 414266539499428874, guid: 9c3776b68c4d3594e8c58923411b745c,
     type: 3}
-  drag: 0.95
+  drag: 0.85
 --- !u!1 &7946441801196212371
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,7 +9782,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_Intensity: 0.5
-  m_Range: 3
+  m_Range: 1
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

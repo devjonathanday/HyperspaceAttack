@@ -259,6 +259,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1101958347}
+    - target: {fileID: 7977865751319207391, guid: a6cf067ec63be6945b5b793a02fa5614,
+        type: 3}
+      propertyPath: FailureScreen
+      value: 
+      objectReference: {fileID: 1592715294}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6cf067ec63be6945b5b793a02fa5614, type: 3}
 --- !u!1 &680203922
@@ -451,7 +456,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 100
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -781,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1592715295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,10 +1230,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8595797607423538533, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1061992956, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
       propertyPath: MyCanvas
       value: 
       objectReference: {fileID: 1463712203}
+    - target: {fileID: 2034068795, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034068797, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034068797, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
+      propertyPath: m_Positions.Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034068797, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
+      propertyPath: m_Positions.Array.data[2].z
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7700f1ebf5d49f04a8f48d45e6d94771, type: 3}
 --- !u!1 &7043021149756793041
