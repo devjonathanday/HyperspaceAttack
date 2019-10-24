@@ -8,6 +8,7 @@ public class S_HealthCanvas : MonoBehaviour
 
     public GameObject[] HealthBars;
     public GameObject FailureScreen;
+    public GameObject Canvas;
 
     private int CurrentHealthBar = 0;
 

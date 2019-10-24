@@ -125,6 +125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7977865751319207376, guid: a6cf067ec63be6945b5b793a02fa5614,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7977865751319207388, guid: a6cf067ec63be6945b5b793a02fa5614,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,6 +265,11 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 7043021150356493538}
+    - target: {fileID: 7977865751319207391, guid: a6cf067ec63be6945b5b793a02fa5614,
+        type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 740727329}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6cf067ec63be6945b5b793a02fa5614, type: 3}
 --- !u!1 &499380143
@@ -331,6 +341,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &740727329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7977865751319207376, guid: a6cf067ec63be6945b5b793a02fa5614,
+    type: 3}
+  m_PrefabInstance: {fileID: 357800364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1101958347 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5409311788846687807, guid: 7700f1ebf5d49f04a8f48d45e6d94771,
@@ -751,7 +767,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
 --- !u!114 &1592715296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +809,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 91
   m_TargetDisplay: 0
 --- !u!224 &1592715298
 RectTransform:
@@ -878,7 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
